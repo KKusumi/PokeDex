@@ -7,20 +7,20 @@ import com.example.pokedex.model.Species
 import com.example.pokedex.model.Sprites
 
 interface GetPokemonDetailUseCase {
-    suspend fun getPokemonDetail(): Result<Pokemon>
+    suspend fun execute(): Result<Pokemon>
 }
 
 class GetPokemonDetailUseCaseImpl(
     private val pokeApiClient: PokeApiClient
 ) : GetPokemonDetailUseCase {
 
-    override suspend fun getPokemonDetail(): Result<Pokemon> {
+    override suspend fun execute(): Result<Pokemon> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 
 class GetPokemonDetailUseCaseDebug : GetPokemonDetailUseCase {
-    override suspend fun getPokemonDetail() = Result.Success(
+    override suspend fun execute() = Result.Success(
         Pokemon(
             abilities = emptyList(),
             base_experience = 0,
