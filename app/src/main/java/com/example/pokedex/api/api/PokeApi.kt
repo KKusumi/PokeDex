@@ -1,11 +1,11 @@
-package com.example.pokedex.api.service
+package com.example.pokedex.api.api
 
 import com.example.pokedex.api.response.PokemonListResponse
 import com.example.pokedex.model.Pokemon
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface PokeApiService {
+interface PokeApi {
 
     @GET("/pokemon")
     suspend fun pokemon(): PokemonListResponse

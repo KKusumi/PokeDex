@@ -1,7 +1,7 @@
 package com.example.pokedex.api.client
 
 import com.example.pokedex.api.response.PokemonListResponse
-import com.example.pokedex.api.service.PokeApiService
+import com.example.pokedex.api.api.PokeApi
 import com.example.pokedex.model.Pokemon
 
 interface PokeApiClient {
@@ -11,14 +11,14 @@ interface PokeApiClient {
 }
 
 class PokeApiClientImpl(
-    private val pokeApiService: PokeApiService
+    private val pokeApi: PokeApi
 ): PokeApiClient {
 
     override suspend fun pokemon(): PokemonListResponse {
-        return pokeApiService.pokemon()
+        return pokeApi.pokemon()
     }
 
     override suspend fun pokemonDetail(id: Int): Pokemon {
-        return pokeApiService.pokemonDetail(id)
+        return pokeApi.pokemonDetail(id)
     }
 }
