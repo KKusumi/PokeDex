@@ -1,4 +1,4 @@
-package com.example.pokedex.api.di
+package com.example.pokedex.di
 
 import com.example.pokedex.api.client.PokeApiClient
 import com.example.pokedex.api.client.PokeApiClientImpl

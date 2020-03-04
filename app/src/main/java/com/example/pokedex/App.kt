@@ -1,8 +1,8 @@
 package com.example.pokedex
 
 import android.app.Application
-import com.example.pokedex.api.di.networkModule
-import com.example.pokedex.api.di.useCaseModule
+import com.example.pokedex.di.networkModule
+import com.example.pokedex.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

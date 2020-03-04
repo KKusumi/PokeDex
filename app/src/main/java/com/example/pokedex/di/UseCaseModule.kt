@@ -1,4 +1,4 @@
-package com.example.pokedex.api.di
+package com.example.pokedex.di
 
 import com.example.pokedex.usecase.GetAllPokemonUseCase
 import com.example.pokedex.usecase.GetAllPokemonUseCaseDebug
