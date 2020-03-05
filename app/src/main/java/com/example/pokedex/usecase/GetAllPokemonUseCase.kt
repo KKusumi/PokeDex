@@ -25,7 +25,7 @@ class GetAllPokemonUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetAl
                         Result.Error(PokeDexError.NetworkError())
                     }
                     else -> {
-                        Result.Error(PokeDexError.UnDefined())
+                        Result.Error(PokeDexError.UndefinedError())
                     }
                 }
             }
