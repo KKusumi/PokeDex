@@ -11,5 +11,5 @@ sealed class PokeDexError(
      */
     class NetworkError : PokeDexError(alertMessage = "通信状況を確認し、再度お試しください。")
 
-    class UnDefined : PokeDexError(alertMessage = "")
+    class UnDefinedError : PokeDexError(alertMessage = "")
 }
