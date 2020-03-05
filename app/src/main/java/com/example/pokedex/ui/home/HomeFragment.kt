@@ -4,28 +4,40 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.example.pokedex.R
+import com.example.pokedex.databinding.FragmentHomeBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var binding: FragmentHomeBinding
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+        binding = DataBindingUtil.inflate<FragmentHomeBinding>(
+            inflater,
+            R.layout.fragment_home,
+            container,
+            false
+        ).apply {
+            this.viewModel = homeViewModel
+
+            /**
+             * これがないと、ViewModelのLiveDataにデータを設定してもレイアウトに反映されない。
+             * よく忘れがちなので注意。
+             */
+            this.lifecycleOwner = this@HomeFragment
+        }
+        /**
+         * ViewModel側で、Fragmentのライフサイクルに応じて呼ばれるメソッドを使えるようになる。
+         */
+        lifecycle.addObserver(homeViewModel)
+        return binding.root
     }
 }
