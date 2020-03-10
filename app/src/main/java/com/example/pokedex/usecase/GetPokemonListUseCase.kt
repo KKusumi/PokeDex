@@ -7,11 +7,11 @@ import com.example.pokedex.model.Result
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-interface GetAllPokemonUseCase {
+interface GetPokemonListUseCase {
     suspend fun execute(): Result<PokemonListResponse>
 }
 
-class GetAllPokemonUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetAllPokemonUseCase {
+class GetPokemonListUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetPokemonListUseCase {
     override suspend fun execute(): Result<PokemonListResponse> {
         kotlin.runCatching {
             pokeApiClient.fetchAllPokemon()
@@ -20,7 +20,7 @@ class GetAllPokemonUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetAl
                 return Result.Success(it)
             },
             onFailure = {
-                return when(it) {
+                return when (it) {
                     is SocketTimeoutException, is UnknownHostException -> {
                         Result.Error(PokeDexError.NetworkError())
                     }
@@ -33,7 +33,7 @@ class GetAllPokemonUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetAl
     }
 }
 
-class GetAllPokemonUseCaseDebug() : GetAllPokemonUseCase {
+class GetPokemonListUseCaseDebug() : GetPokemonListUseCase {
     override suspend fun execute() = Result.Success(
         PokemonListResponse(
             count = 0,
