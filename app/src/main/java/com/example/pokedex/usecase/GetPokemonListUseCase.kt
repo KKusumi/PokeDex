@@ -14,7 +14,7 @@ interface GetPokemonListUseCase {
 class GetPokemonListUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetPokemonListUseCase {
     override suspend fun execute(): Result<PokemonListResponse> {
         kotlin.runCatching {
-            pokeApiClient.fetchAllPokemon()
+            pokeApiClient.fetchPokemonList()
         }.fold(
             onSuccess = {
                 return Result.Success(it)
