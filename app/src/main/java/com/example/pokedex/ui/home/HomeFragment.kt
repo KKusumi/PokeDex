@@ -17,6 +17,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by viewModel()
+    private var controller: HomeController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +38,7 @@ class HomeFragment : Fragment() {
              */
             this.lifecycleOwner = this@HomeFragment
         }
+
         /**
          * ViewModel側で、Fragmentのライフサイクルに応じて呼ばれるメソッドを使えるようになる。
          */
@@ -51,6 +53,11 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         observeState(homeViewModel)
         observeEvent(homeViewModel)
+        setupController()
+    }
+
+    private fun setupController() {
+
     }
 
     private fun observeState(viewModel: HomeViewModel) {
