@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
     private fun observeState(viewModel: HomeViewModel) {
         viewModel.run {
             this.pokemonListResponse.observe(viewLifecycleOwner, Observer {
-                // todo
+                controller?.setData(it)
             })
         }
     }
