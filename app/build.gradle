@@ -1,9 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 kapt {
@@ -75,7 +72,8 @@ dependencies {
 
     // Epoxy
     implementation 'com.airbnb.android:epoxy:3.9.0'
-    annotationProcessor 'com.airbnb.android:epoxy-processor:3.9.0'
+    implementation "com.airbnb.android:epoxy-databinding:3.9.0"
+    kapt 'com.airbnb.android:epoxy-processor:3.9.0'
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.6'
