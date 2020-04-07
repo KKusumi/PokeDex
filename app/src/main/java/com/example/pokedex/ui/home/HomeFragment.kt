@@ -58,8 +58,8 @@ class HomeFragment : Fragment() {
 
     private fun setupController() {
         controller = HomeController()
-        controller?.let { controller ->
-            binding.recyclerView.setController(controller)
+        controller?.let { it ->
+            binding.recyclerView.setController(it)
         }
     }
 

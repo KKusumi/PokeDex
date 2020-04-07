@@ -7,10 +7,10 @@ import com.example.pokedex.homePokemonList
 class HomeController : TypedEpoxyController<PokemonListResponse>() {
 
     override fun buildModels(data: PokemonListResponse?) {
-        data?.results?.forEach { pokemon ->
+        data?.results?.forEach {
             homePokemonList {
                 id(modelCountBuiltSoFar)
-                pokemon(pokemon)
+                pokemon(it)
             }
         }
     }
