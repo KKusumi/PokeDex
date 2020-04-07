@@ -4,6 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="error_alert_title">エラーが発生しました。</string>
+    <string name="please_retry">再読み込みを行ってください。</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="retry">再読み込み</string>
 </resources>
