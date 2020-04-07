@@ -4,6 +4,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="com.example.pokedex.model.UiState" />
+
         <variable
             name="viewModel"
             type="com.example.pokedex.ui.home.HomeViewModel" />
@@ -22,6 +26,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.pokedex.util.RetryView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{viewModel.uiState instanceof UiState.Retry ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onRetry="@{viewModel::fetchData}"
+            app:uiState="@{viewModel.uiState}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
