@@ -1,5 +1,9 @@
 package com.example.pokedex.api.response
 
+import com.example.pokedex.util.ext.generatePokemonBackImageUrl
+import com.example.pokedex.util.ext.generatePokemonFrontImageUrl
+import com.example.pokedex.util.ext.generatePokemonNumber
+
 data class PokemonListResponse(
     val count: Int,
     val next: String,
@@ -9,5 +13,14 @@ data class PokemonListResponse(
     data class Pokemon(
         val name: String,
         val url: String
-    )
+    ) {
+        val number
+            get() = generatePokemonNumber(url)
+
+        val frontImageUrl
+            get() = generatePokemonFrontImageUrl(number)
+
+        val backImageUrl
+            get() = generatePokemonBackImageUrl(number)
+    }
 }
