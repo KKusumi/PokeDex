@@ -8,4 +8,16 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="retry">再読み込み</string>
+    <string name="type">タイプ</string>
+    <string name="height">高さ</string>
+    <string name="weight">重さ</string>
+    <string name="ability1">特性1</string>
+    <string name="ability2">特性2</string>
+    <string name="hide_ability">夢特性</string>
+    <string name="hp">HP</string>
+    <string name="attack">こうげき</string>
+    <string name="defense">ぼうぎょ</string>
+    <string name="special_attack">とくこう</string>
+    <string name="special_defense">とくぼう</string>
+    <string name="speed">すばやさ</string>
 </resources>

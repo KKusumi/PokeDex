@@ -12,11 +12,16 @@
         <variable
             name="pokemon"
             type="com.example.pokedex.api.response.PokemonListResponse.Pokemon" />
+
+        <variable
+            name="onClickItem"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{onClickItem}"
         android:paddingStart="@dimen/space_x2">
 
         <TextView

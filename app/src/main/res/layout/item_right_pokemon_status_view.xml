@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/shape_right_rolled_status_bar"
+            android:elevation="1dp"
             android:gravity="center_vertical">
 
             <ImageView
@@ -83,6 +84,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/space_x1"
             android:background="@drawable/shape_right_rolled_status_bar"
+            android:elevation="1dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -129,16 +131,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_defence"
+            android:id="@+id/container_defense"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/space_x1"
             android:background="@drawable/shape_right_rolled_status_bar"
+            android:elevation="1dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/ic_defence"
+                android:id="@+id/ic_defense"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="@dimen/space_x3"
@@ -149,27 +152,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_defence_label"
+                android:id="@+id/text_defense_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:lineHeight="20sp"
-                android:text="@string/defence"
+                android:text="@string/defense"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ic_defence"
+                app:layout_constraintStart_toEndOf="@id/ic_defense"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_defence"
+                android:id="@+id/text_defense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.defence)}"
+                android:text="@{Integer.toString(pokemon.defense)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -185,6 +188,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/space_x1"
             android:background="@drawable/shape_right_rolled_status_bar"
+            android:elevation="1dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -231,16 +235,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_special_defence"
+            android:id="@+id/container_special_defense"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/space_x1"
             android:background="@drawable/shape_right_rolled_status_bar"
+            android:elevation="1dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/ic_special_defence"
+                android:id="@+id/ic_special_defense"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="@dimen/space_x3"
@@ -251,27 +256,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_special_defence_label"
+                android:id="@+id/text_special_defense_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:lineHeight="20sp"
-                android:text="@string/special_defence"
+                android:text="@string/special_defense"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ic_special_defence"
+                app:layout_constraintStart_toEndOf="@id/ic_special_defense"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_special_defence"
+                android:id="@+id/text_special_defense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.specialDefence)}"
+                android:text="@{Integer.toString(pokemon.specialDefense)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -286,7 +291,9 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/space_x1"
+            android:layout_marginBottom="@dimen/space_x1"
             android:background="@drawable/shape_right_rolled_status_bar"
+            android:elevation="1dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 

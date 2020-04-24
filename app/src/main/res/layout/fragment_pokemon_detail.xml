@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.pokedex.ui.pokemondetail.PokemonDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white">
+
+            <ImageView
+                android:id="@+id/image_type_color_half_circle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_marginStart="@dimen/space_x6"
+                android:layout_marginTop="@dimen/space_x6"
+                android:layout_marginEnd="@dimen/space_x6"
+                app:imageFromUrl="@{viewModel.pokemon.frontImageUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x2"
+                android:layout_marginTop="@dimen/space_x1"
+                android:gravity="center"
+                android:lineHeight="13dp"
+                android:text='@{"No." + Integer.toString(viewModel.pokemon.id)}'
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                tools:text="No.025" />
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x2"
+                android:layout_marginTop="@dimen/space_x1"
+                android:lineHeight="22sp"
+                android:text="@{viewModel.pokemon.name}"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_id"
+                tools:text="ピカチュウ" />
+
+            <com.airbnb.epoxy.EpoxyRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x3"
+                android:layout_marginBottom="@dimen/space_x4_5"
+                android:splitMotionEvents="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
