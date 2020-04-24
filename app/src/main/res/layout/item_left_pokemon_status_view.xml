@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.example.pokedex.model.Pokemon" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/space_x2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_type"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/shape_left_rolled_status_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_type"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/space_x3"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_type" />
+
+            <TextView
+                android:id="@+id/text_type_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_weight="1"
+                android:lineHeight="20sp"
+                android:text="@string/type"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_marginEnd="@dimen/space_x5"
+                android:gravity="end"
+                android:lineHeight="20sp"
+                android:text="@{pokemon.getTypesText()}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="どく・ドラゴン" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_height"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_x1"
+            android:background="@drawable/shape_left_rolled_status_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_person_height"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/space_x3"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_person" />
+
+            <TextView
+                android:id="@+id/text_height_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_weight="1"
+                android:lineHeight="20sp"
+                android:text="@string/height"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_marginEnd="@dimen/space_x5"
+                android:gravity="end"
+                android:lineHeight="20sp"
+                android:text='@{pokemon.height + "m"}'
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="20.0m" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_weight"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_x1"
+            android:background="@drawable/shape_left_rolled_status_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_person_weight"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/space_x3"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_person" />
+
+            <TextView
+                android:id="@+id/text_weight_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_weight="1"
+                android:lineHeight="20sp"
+                android:text="@string/weight"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_marginEnd="@dimen/space_x5"
+                android:gravity="end"
+                android:lineHeight="20sp"
+                android:text='@{pokemon.weight + "kg"}'
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="950.0kg" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_ability1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_x1"
+            android:background="@drawable/shape_left_rolled_status_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_ability1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/space_x3"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_brightness_low" />
+
+            <TextView
+                android:id="@+id/text_ability1_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_weight="1"
+                android:lineHeight="20sp"
+                android:text="@string/ability1"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_ability1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_marginEnd="@dimen/space_x5"
+                android:gravity="end"
+                android:lineHeight="20sp"
+                android:text="@{pokemon.abilities.get(0).ability.name}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="プレッシャー" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_ability2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_x1"
+            android:background="@drawable/shape_left_rolled_status_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_ability2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/space_x3"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_brightness_low" />
+
+            <TextView
+                android:id="@+id/text_ability2_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_weight="1"
+                android:lineHeight="20sp"
+                android:text="@string/ability2"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_ability2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_marginEnd="@dimen/space_x5"
+                android:gravity="end"
+                android:lineHeight="20sp"
+                android:text="@{pokemon.abilities.get(1).ability.name}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="なし" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_hide_ability"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_x1"
+            android:background="@drawable/shape_left_rolled_status_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_hide_ability"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/space_x3"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_brightness_midium" />
+
+            <TextView
+                android:id="@+id/text_hide_ability_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_weight="1"
+                android:lineHeight="20sp"
+                android:text="@string/hide_ability"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_hide_ability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_x3"
+                android:layout_marginEnd="@dimen/space_x5"
+                android:gravity="end"
+                android:lineHeight="20sp"
+                android:text="@{pokemon.abilities.get(2).ability.name}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="なし" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>
