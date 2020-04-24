@@ -8,16 +8,21 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentHomeBinding
+import com.example.pokedex.navigator.HomeNavigator
 import com.example.pokedex.util.EventObserver
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by viewModel()
     private var controller: HomeController? = null
+    private val navigator: HomeNavigator by inject { parametersOf(parentFragment?.findNavController()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +62,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupController() {
-        controller = HomeController()
+        controller = HomeController(
+            onClickItem = {
+                navigator.toPokemonDetail(it.number)
+            }
+        )
         controller?.let { it ->
             binding.recyclerView.setController(it)
         }
