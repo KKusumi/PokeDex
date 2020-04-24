@@ -18,4 +18,23 @@ data class Pokemon(
     val stats: List<Stat>,
     val types: List<Type>,
     val weight: Int
-)
+) {
+
+    fun getTypesText() = if (types.size == 1) {
+        types[0].type.name
+    } else {
+        types[0].type.name + "・" + types[1].type.name
+    }
+
+    fun getHp() = stats.find { it.stat.name == "hp" }
+
+    fun getAttack() = stats.find { it.stat.name == "attack" }
+
+    fun getDefence() = stats.find { it.stat.name == "defence" }
+
+    fun getSpecialAttack() = stats.find { it.stat.name == "special-attack" }
+
+    fun getSpecialDefence() = stats.find { it.stat.name == "special-defence" }
+
+    fun getSpeed() = stats.find { it.stat.name == "speed" }
+}
