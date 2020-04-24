@@ -2,6 +2,7 @@ package com.example.pokedex
 
 import android.app.Application
 import com.example.pokedex.di.delegateModule
+import com.example.pokedex.di.navigationModule
 import com.example.pokedex.di.networkModule
 import com.example.pokedex.di.useCaseModule
 import com.example.pokedex.di.viewModelModule
@@ -17,7 +18,7 @@ class App: Application() {
             modules(
                 listOf(
                     networkModule, useCaseModule, viewModelModule,
-                    delegateModule
+                    delegateModule, navigationModule
                 )
             )
         }
