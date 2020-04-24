@@ -18,9 +18,9 @@ data class PokemonListResponse(
             get() = generatePokemonNumber(url)
 
         val frontImageUrl
-            get() = generatePokemonFrontImageUrl(number)
+            get() = generatePokemonFrontImageUrl(number.toString())
 
         val backImageUrl
-            get() = generatePokemonBackImageUrl(number)
+            get() = generatePokemonBackImageUrl(number.toString())
     }
 }
