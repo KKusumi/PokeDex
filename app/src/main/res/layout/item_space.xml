@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="widthDp" type="java.lang.Integer"/>
+        <variable name="heightDp" type="java.lang.Integer"/>
+    </data>
+
+    <FrameLayout
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        widthDp="@{widthDp}"
+        heightDp="@{heightDp}"/>
+</layout>
