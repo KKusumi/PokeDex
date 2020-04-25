@@ -21,52 +21,51 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{onClickItem}"
-        android:paddingStart="@dimen/space_x2">
+        android:background="@drawable/shape_left_rolled_status_bar"
+        android:elevation="1dp"
+        android:foreground="@drawable/ripple_white"
+        android:onClick="@{onClickItem}">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/space_x4"
+            android:layout_marginTop="@dimen/space_x2"
+            android:layout_marginBottom="@dimen/space_x2"
+            android:contentDescription="@null"
+            app:imageFromUrl="@{pokemon.frontImageUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_x1"
+            android:layout_marginStart="@dimen/space_x3"
             android:ellipsize="end"
+            android:lineHeight="13sp"
             android:singleLine="true"
             android:text='@{"No." + pokemon.number}'
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/text_pokemon_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="@id/image"
             tools:text="No.100" />
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/space_x1"
-            android:layout_marginBottom="@dimen/space_x1"
-            app:imageFromUrl="@{pokemon.frontImageUrl}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_number" />
 
         <TextView
             android:id="@+id/text_pokemon_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_x1"
             android:layout_marginTop="@dimen/space_x1"
-            android:layout_marginBottom="@dimen/space_x1"
             android:gravity="center_vertical"
+            android:lineHeight="22sp"
             android:text="@{pokemon.name}"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/image"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/text_number"
+            app:layout_constraintTop_toBottomOf="@id/text_number"
             tools:text="Charizard" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
