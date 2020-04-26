@@ -22,5 +22,11 @@ data class PokemonListResponse(
 
         val backImageUrl
             get() = generatePokemonBackImageUrl(number.toString())
+
+        fun getCamelCaseName(): String = if (name.isEmpty()) {
+            ""
+        } else {
+            name[0].toUpperCase() + name.substring(1)
+        }
     }
 }

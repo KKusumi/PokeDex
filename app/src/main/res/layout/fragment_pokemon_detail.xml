@@ -79,7 +79,7 @@
                 android:layout_marginStart="@dimen/space_x2"
                 android:layout_marginTop="@dimen/space_x1"
                 android:lineHeight="22sp"
-                android:text="@{viewModel.pokemon.name}"
+                android:text="@{viewModel.pokemon.getCamelCaseName()}"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"

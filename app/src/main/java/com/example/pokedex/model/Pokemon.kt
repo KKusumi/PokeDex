@@ -30,10 +30,16 @@ data class Pokemon(
     val backImageUrl
         get() = generatePokemonBackImageUrl(id.toString())
 
-    fun getTypesText() = if (types.size == 1) {
-        types[0].type.name
+    fun getCamelCaseName(): String = if (name.isEmpty()) {
+        ""
     } else {
-        types[0].type.name + "・" + types[1].type.name
+        name[0].toUpperCase() + name.substring(1)
+    }
+
+    fun getTypesText() = if (types.size == 1) {
+        types[0].type.name.toUpperCase()
+    } else {
+        types[0].type.name.toUpperCase() + "・" + types[1].type.name.toUpperCase()
     }
 
     fun getSlot1AbilityText() = abilities.find { it.slot == 1 }?.ability?.name ?: "なし"
@@ -56,8 +62,8 @@ data class Pokemon(
 
     fun getTypeColorHalfCircle(): Int {
         return when (this.types.find { it.slot == 1 }?.type?.name) {
-            "normal" ->  R.drawable.ic_normal_color_half_circle
-            "fire" ->  R.drawable.ic_fire_color_half_circle
+            "normal" -> R.drawable.ic_normal_color_half_circle
+            "fire" -> R.drawable.ic_fire_color_half_circle
             "water" -> R.drawable.ic_water_color_half_circle
             "grass" -> R.drawable.ic_grass_color_half_circle
             "electric" -> R.drawable.ic_electric_color_half_circle
