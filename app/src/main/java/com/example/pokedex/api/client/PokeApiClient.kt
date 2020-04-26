@@ -5,7 +5,10 @@ import com.example.pokedex.api.response.PokemonListResponse
 import com.example.pokedex.model.Pokemon
 
 interface PokeApiClient {
-    suspend fun fetchPokemonList(): PokemonListResponse
+    companion object {
+        private const val TOTAL_POKEMONS_COUNT = 807
+    }
+    suspend fun fetchPokemonList(limit: Int = TOTAL_POKEMONS_COUNT): PokemonListResponse
     suspend fun fetchPokemonDetail(id: Int): Pokemon
 }
 
@@ -13,8 +16,8 @@ class PokeApiClientImpl(
     private val pokeApi: PokeApi
 ) : PokeApiClient {
 
-    override suspend fun fetchPokemonList(): PokemonListResponse {
-        return pokeApi.pokemon()
+    override suspend fun fetchPokemonList(limit: Int): PokemonListResponse {
+        return pokeApi.pokemon(limit)
     }
 
     override suspend fun fetchPokemonDetail(id: Int): Pokemon {
