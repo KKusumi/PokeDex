@@ -9,3 +9,9 @@ fun generatePokemonFrontImageUrl(number: String) =
 
 fun generatePokemonBackImageUrl(number: String) =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${number}.png"
+
+fun String.convertToCamelCase() = if (this.isEmpty()) {
+    ""
+} else {
+    this[0].toUpperCase() + this.substring(1)
+}
