@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokedex.space
+import com.example.pokedex.util.view.GlideUrlNoParams
 
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageFromUrl: String?) {

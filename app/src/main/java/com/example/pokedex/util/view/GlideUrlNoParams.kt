@@ -1,4 +1,4 @@
-package com.example.pokedex.util.ext
+package com.example.pokedex.util.view
 
 import com.bumptech.glide.load.model.GlideUrl
 
