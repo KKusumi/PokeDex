@@ -27,7 +27,7 @@ class PokemonDetailViewModel(
     val pokemon: LiveData<Pokemon>
         get() = _pokemon
 
-    private var _id: Int = -1
+    private var _id: Int = DEFAULT_ID
 
     fun retry() {
         if (_id != DEFAULT_ID) {
