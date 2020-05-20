@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="number"
-            type="String" />
-
-        <variable
             name="pokemon"
             type="com.example.pokedex.api.response.PokemonListResponse.Pokemon" />
 
