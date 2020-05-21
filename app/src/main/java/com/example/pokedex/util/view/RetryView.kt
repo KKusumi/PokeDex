@@ -1,4 +1,4 @@
-package com.example.pokedex.util
+package com.example.pokedex.util.view
 
 import android.content.Context
 import android.util.AttributeSet
