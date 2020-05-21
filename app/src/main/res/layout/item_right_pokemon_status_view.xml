@@ -58,7 +58,7 @@
 
             <View
                 android:id="@+id/hp_status_bar"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="@dimen/space_x1"
                 android:background="@color/status_bar_gray"
@@ -129,7 +129,7 @@
 
             <View
                 android:id="@+id/attack_status_bar"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="@dimen/space_x1"
                 android:background="@color/status_bar_gray"
@@ -200,7 +200,7 @@
 
             <View
                 android:id="@+id/defense_status_bar"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="@dimen/space_x1"
                 android:background="@color/status_bar_gray"
@@ -271,7 +271,7 @@
 
             <View
                 android:id="@+id/special_attack_status_bar"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="@dimen/space_x1"
                 android:background="@color/status_bar_gray"
@@ -342,7 +342,7 @@
 
             <View
                 android:id="@+id/special_defense_status_bar"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="@dimen/space_x1"
                 android:background="@color/status_bar_gray"
@@ -414,7 +414,7 @@
 
             <View
                 android:id="@+id/speed_status_bar"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="@dimen/space_x1"
                 android:background="@color/status_bar_gray"
