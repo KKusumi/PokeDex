@@ -109,7 +109,6 @@ class PokemonDetailFragment : Fragment() {
     private fun observe(viewModel: PokemonDetailViewModel) {
         viewModel.run {
             this.pokemon.observe(viewLifecycleOwner, Observer {
-                binding.imageTypeColorHalfCircle.setImageResource(it.getTypeColorHalfCircle())
                 controller?.setData(it)
             })
         }
