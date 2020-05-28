@@ -45,16 +45,8 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier_hp"
                 app:layout_constraintStart_toEndOf="@id/ic_hp"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_hp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="hp_status_bar" />
 
             <View
                 android:id="@+id/hp_status_bar"
@@ -65,11 +57,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_hp"
                 app:layout_constraintTop_toTopOf="parent"
+                app:status_bar_width="@{pokemon.hp}"
                 tools:layout_width="128dp" />
 
             <TextView
                 android:id="@+id/text_hp"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
@@ -116,16 +109,8 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier_attack"
                 app:layout_constraintStart_toEndOf="@id/ic_attack"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_attack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="attack_status_bar" />
 
             <View
                 android:id="@+id/attack_status_bar"
@@ -136,11 +121,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_attack"
                 app:layout_constraintTop_toTopOf="parent"
+                app:status_bar_width="@{pokemon.attack}"
                 tools:layout_width="128dp" />
 
             <TextView
                 android:id="@+id/text_attack"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
@@ -187,16 +173,8 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier_defense"
                 app:layout_constraintStart_toEndOf="@id/ic_defense"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_defense"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="defense_status_bar" />
 
             <View
                 android:id="@+id/defense_status_bar"
@@ -207,11 +185,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_defense"
                 app:layout_constraintTop_toTopOf="parent"
+                app:status_bar_width="@{pokemon.defense}"
                 tools:layout_width="128dp" />
 
             <TextView
                 android:id="@+id/text_defense"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
@@ -258,16 +237,8 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier_special_attack"
                 app:layout_constraintStart_toEndOf="@id/ic_special_attack"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_special_attack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="special_attack_status_bar" />
 
             <View
                 android:id="@+id/special_attack_status_bar"
@@ -278,11 +249,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_special_attack"
                 app:layout_constraintTop_toTopOf="parent"
+                app:status_bar_width="@{pokemon.specialAttack}"
                 tools:layout_width="128dp" />
 
             <TextView
                 android:id="@+id/text_special_attack"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
@@ -329,16 +301,8 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier_special_defense"
                 app:layout_constraintStart_toEndOf="@id/ic_special_defense"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_special_defense"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="special_defense_status_bar" />
 
             <View
                 android:id="@+id/special_defense_status_bar"
@@ -349,11 +313,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_special_defense"
                 app:layout_constraintTop_toTopOf="parent"
+                app:status_bar_width="@{pokemon.specialDefense}"
                 tools:layout_width="128dp" />
 
             <TextView
                 android:id="@+id/text_special_defense"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
@@ -401,16 +366,8 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier_speed"
                 app:layout_constraintStart_toEndOf="@id/ic_speed"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_speed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="speed_status_bar" />
 
             <View
                 android:id="@+id/speed_status_bar"
@@ -422,11 +379,12 @@
                 app:layout_constraintEnd_toStartOf="@id/text_speed"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintTop_toTopOf="parent"
+                app:status_bar_width="@{pokemon.speed}"
                 tools:layout_width="128dp" />
 
             <TextView
                 android:id="@+id/text_speed"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_x3"
                 android:layout_marginEnd="@dimen/space_x5"
