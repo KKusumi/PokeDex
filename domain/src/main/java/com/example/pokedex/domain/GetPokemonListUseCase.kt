@@ -1,7 +1,7 @@
-package com.example.pokedex.usecase
+package com.example.pokedex.domain
 
 import com.example.pokedex.api.client.PokeApiClient
-import com.example.pokedex.api.response.PokemonListResponse
+import com.example.pokedex.model.PokemonListResponse
 import com.example.pokedex.model.PokeDexError
 import com.example.pokedex.model.Result
 import java.net.SocketTimeoutException
@@ -13,14 +13,14 @@ interface GetPokemonListUseCase {
 
 class GetPokemonListUseCaseImpl(private val pokeApiClient: PokeApiClient) : GetPokemonListUseCase {
     override suspend fun execute(): Result<PokemonListResponse> {
-        kotlin.runCatching {
+        return kotlin.runCatching {
             pokeApiClient.fetchPokemonList()
         }.fold(
             onSuccess = {
-                return Result.Success(it)
+                 Result.Success(it)
             },
             onFailure = {
-                return when (it) {
+                when (it) {
                     is SocketTimeoutException, is UnknownHostException -> {
                         Result.Error(PokeDexError.NetworkError())
                     }

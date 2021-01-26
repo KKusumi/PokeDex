@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.api.response.PokemonListResponse
+import com.example.pokedex.model.PokemonListResponse
 import com.example.pokedex.delegate.ErrorViewModelDelegate
 import com.example.pokedex.model.Result
 import com.example.pokedex.model.UiState
-import com.example.pokedex.usecase.GetPokemonListUseCase
+import com.example.pokedex.domain.GetPokemonListUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel(

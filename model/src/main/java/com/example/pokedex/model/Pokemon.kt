@@ -1,8 +1,5 @@
 package com.example.pokedex.model
 
-import com.example.pokedex.util.ext.generatePokemonBackImageUrl
-import com.example.pokedex.util.ext.generatePokemonFrontImageUrl
-
 data class Pokemon(
     val abilities: List<Ability>,
     val base_experience: Int,
@@ -60,4 +57,10 @@ data class Pokemon(
     fun getSpecialDefense() = stats.find { it.stat.name == "special-defense" }?.base_stat
 
     fun getSpeed() = stats.find { it.stat.name == "speed" }?.base_stat
+
+    private fun generatePokemonFrontImageUrl(number: String) =
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
+
+    private fun generatePokemonBackImageUrl(number: String) =
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${number}.png"
 }

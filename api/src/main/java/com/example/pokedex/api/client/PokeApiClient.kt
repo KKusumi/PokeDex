@@ -1,8 +1,8 @@
 package com.example.pokedex.api.client
 
 import com.example.pokedex.api.api.PokeApi
-import com.example.pokedex.api.response.PokemonListResponse
 import com.example.pokedex.model.Pokemon
+import com.example.pokedex.model.PokemonListResponse
 
 interface PokeApiClient {
     companion object {

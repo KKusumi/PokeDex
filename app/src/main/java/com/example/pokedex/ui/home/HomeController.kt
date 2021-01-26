@@ -1,8 +1,8 @@
 package com.example.pokedex.ui.home
 
 import com.airbnb.epoxy.TypedEpoxyController
-import com.example.pokedex.api.response.PokemonListResponse
-import com.example.pokedex.api.response.PokemonListResponse.Pokemon
+import com.example.pokedex.model.PokemonListResponse
+import com.example.pokedex.model.PokemonListResponse.Pokemon
 import com.example.pokedex.homePokemonList
 import com.example.pokedex.util.ext.addSpace
 

@@ -1,6 +1,5 @@
 apply from: "${rootDir.absolutePath}/android_build_common.gradle"
 
 dependencies {
-    implementation project(':api')
-    implementation project(':model')
+
 }
