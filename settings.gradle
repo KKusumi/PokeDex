@@ -1,5 +1,5 @@
 rootProject.name = 'PokeDex'
 include ':app',
         ':domain',
-        ':api',
+        ':data:api',
         ':model'
