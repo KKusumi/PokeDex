@@ -1,7 +1,7 @@
 package com.example.pokedex.di
 
-import com.example.pokedex.ui.home.HomeViewModel
-import com.example.pokedex.ui.pokemondetail.PokemonDetailViewModel
+import com.example.pokedex.home.HomeViewModel
+import com.example.pokemon_detail.PokemonDetailViewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {

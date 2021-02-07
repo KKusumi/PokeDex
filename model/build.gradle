@@ -1,4 +1,4 @@
-apply from: "${rootDir.absolutePath}/android_build_common.gradle"
+apply from: "${rootDir.absolutePath}/android_common_build.gradle"
 
 dependencies {
 
