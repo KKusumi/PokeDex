@@ -1,4 +1,4 @@
-package com.example.pokedex.usecase
+package com.example.pokedex.domain
 
 import com.example.pokedex.api.client.PokeApiClient
 import com.example.pokedex.model.PokeDexError

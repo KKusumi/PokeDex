@@ -9,7 +9,7 @@ import com.example.pokedex.common.delegate.ErrorViewModelDelegate
 import com.example.pokedex.model.Pokemon
 import com.example.pokedex.model.Result
 import com.example.pokedex.model.UiState
-import com.example.pokedex.usecase.GetPokemonDetailUseCase
+import com.example.pokedex.domain.GetPokemonDetailUseCase
 import kotlinx.coroutines.launch
 
 class PokemonDetailViewModel(
