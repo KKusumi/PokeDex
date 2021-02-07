@@ -1,7 +1,7 @@
-include ':pokemon_detail'
 rootProject.name = 'PokeDex'
 include ':app',
         ':domain',
+        ':repository',
         ':data:api',
         ':model',
         ':shared',
