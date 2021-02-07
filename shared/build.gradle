@@ -1,7 +1,9 @@
+import dependencies.Dep
+
 apply from: "${rootDir.absolutePath}/android_common_build.gradle"
 
 dependencies {
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation Dep.Glide.glide
+    kapt Dep.Glide.compiler
 }

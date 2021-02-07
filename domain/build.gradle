@@ -1,3 +1,5 @@
+import dependencies.Dep
+
 apply from: "${rootDir.absolutePath}/android_common_build.gradle"
 
 repositories {
@@ -9,5 +11,5 @@ dependencies {
     implementation project(':model')
     implementation project(':repository')
 
-    implementation "com.michael-bull.kotlin-result:kotlin-result:1.1.10"
+    implementation Dep.Other.KotlinResult.kotlinResult
 }

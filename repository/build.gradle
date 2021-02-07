@@ -1,3 +1,5 @@
+import dependencies.Dep
+
 apply from: "${rootDir.absolutePath}/android_common_build.gradle"
 
 repositories {
@@ -9,12 +11,9 @@ dependencies {
     implementation project(':model')
 
     // Kotlin Result
-    implementation "com.michael-bull.kotlin-result:kotlin-result:1.1.10"
+    implementation Dep.Other.KotlinResult.kotlinResult
 
     // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation("com.squareup.retrofit2:converter-protobuf:2.9.0") {
-        exclude group: 'com.google.protobuf', module: 'protobuf-java'
-    }
+    implementation Dep.Square.Retrofit.retrofit
+    implementation Dep.Square.Retrofit.converterGson
 }
