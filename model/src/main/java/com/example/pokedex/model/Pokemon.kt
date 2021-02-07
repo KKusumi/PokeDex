@@ -1,5 +1,7 @@
 package com.example.pokedex.model
 
+import java.util.*
+
 data class Pokemon(
     val abilities: List<Ability>,
     val base_experience: Int,
@@ -35,9 +37,9 @@ data class Pokemon(
     fun getSlot1Type() = this.types.find { it.slot == 1 }?.type?.name
 
     fun getTypesText() = if (types.size == 1) {
-        types[0].type.name.toUpperCase()
+        types[0].type.name.toUpperCase(Locale.getDefault())
     } else {
-        types[0].type.name.toUpperCase() + "・" + types[1].type.name.toUpperCase()
+        types[0].type.name.toUpperCase(Locale.getDefault()) + "・" + types[1].type.name.toUpperCase(Locale.getDefault())
     }
 
     fun getSlot1AbilityText() = abilities.find { it.slot == 1 }?.ability?.name ?: "なし"
