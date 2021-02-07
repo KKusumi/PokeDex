@@ -1,6 +1,13 @@
 apply from: "${rootDir.absolutePath}/android_common_build.gradle"
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation project(':data:api')
     implementation project(':model')
+    implementation project(':repository')
+
+    implementation "com.michael-bull.kotlin-result:kotlin-result:1.1.10"
 }

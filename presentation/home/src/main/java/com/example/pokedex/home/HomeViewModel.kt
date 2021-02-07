@@ -12,6 +12,8 @@ import com.example.pokedex.model.PokemonListResponse
 import com.example.pokedex.model.Result
 import com.example.pokedex.model.UiState
 import com.example.pokedex.domain.GetPokemonListUseCase
+import com.github.michaelbull.result.Err
+import com.github.michaelbull.result.Ok
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -34,12 +36,12 @@ class HomeViewModel(
         viewModelScope.launch {
             uiState.postValue(UiState.Loading)
             when (val result = getPokemonListUseCase.execute()) {
-                is Result.Success -> {
+                is Ok -> {
                     uiState.postValue(UiState.Loaded)
-                    _pokemonListResponse.postValue(result.data)
+                    _pokemonListResponse.postValue(result.value)
                 }
-                is Result.Error -> {
-                    handleError(result.exception)
+                is Err -> {
+                    handleError(result.error)
                 }
             }
         }

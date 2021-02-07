@@ -6,6 +6,7 @@ import com.example.pokedex.di.navigationModule
 import com.example.pokedex.di.networkModule
 import com.example.pokedex.di.useCaseModule
 import com.example.pokedex.di.viewModelModule
+import com.example.repository.di.repositoryModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -17,7 +18,7 @@ class App: Application() {
             androidContext(this@App)
             modules(
                 listOf(
-                    networkModule, useCaseModule, viewModelModule,
+                    networkModule, useCaseModule, repositoryModule, viewModelModule,
                     delegateModule, navigationModule
                 )
             )

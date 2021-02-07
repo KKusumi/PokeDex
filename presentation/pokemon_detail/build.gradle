@@ -5,4 +5,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':shared')
     implementation project(':presentation:common')
+
+    // Kotlin Result
+    implementation "com.michael-bull.kotlin-result:kotlin-result:1.1.10"
 }

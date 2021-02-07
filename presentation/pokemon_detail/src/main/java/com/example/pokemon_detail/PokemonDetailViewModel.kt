@@ -10,6 +10,8 @@ import com.example.pokedex.model.Pokemon
 import com.example.pokedex.model.Result
 import com.example.pokedex.model.UiState
 import com.example.pokedex.domain.GetPokemonDetailUseCase
+import com.github.michaelbull.result.Err
+import com.github.michaelbull.result.Ok
 import kotlinx.coroutines.launch
 
 class PokemonDetailViewModel(
@@ -40,12 +42,12 @@ class PokemonDetailViewModel(
             _id = id
             uiState.postValue(UiState.Loading)
             when (val result = getPokemonDetailUseCase.execute(id)) {
-                is Result.Success -> {
+                is Ok -> {
                     uiState.postValue(UiState.Loaded)
-                    _pokemon.postValue(result.data)
+                    _pokemon.postValue(result.value)
                 }
-                is Result.Error -> {
-                    handleError(result.exception)
+                is Err -> {
+                    handleError(result.error)
                 }
             }
         }
