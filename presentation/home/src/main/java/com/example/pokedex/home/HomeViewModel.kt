@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
 import com.example.pokedex.model.PokemonListResponse
-import com.example.pokedex.model.Result
 import com.example.pokedex.model.UiState
 import com.example.pokedex.domain.GetPokemonListUseCase
 import com.github.michaelbull.result.Err
