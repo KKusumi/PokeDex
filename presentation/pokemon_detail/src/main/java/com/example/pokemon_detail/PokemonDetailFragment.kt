@@ -1,13 +1,9 @@
 package com.example.pokemon_detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -21,45 +17,29 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class PokemonDetailFragment : Fragment() {
+class PokemonDetailFragment : Fragment(R.layout.fragment_pokemon_detail) {
 
-    private lateinit var binding: FragmentPokemonDetailBinding
+    private var _binding: FragmentPokemonDetailBinding? = null
+    private val binding get() = _binding!!
     private val pokemonDetailViewModel: PokemonDetailViewModel by viewModel()
     private val args: PokemonDetailFragmentArgs by navArgs()
     private var controller: PokemonDetailController? = null
     private val navigator: PokemonDetailNavigator by inject { parametersOf(parentFragment?.findNavController()) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate<FragmentPokemonDetailBinding>(
-            inflater,
-            R.layout.fragment_pokemon_detail,
-            container,
-            false
-        ).apply {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentPokemonDetailBinding.bind(view).apply {
             this.viewModel = pokemonDetailViewModel
             this.lifecycleOwner = this@PokemonDetailFragment
             this.onClickBack = View.OnClickListener {
                 toPrev()
             }
         }
-
-        setupController()
-
         lifecycle.addObserver(pokemonDetailViewModel)
 
-        pokemonDetailViewModel.fetchData(args.id)
-
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        hideStatusBar()
         setupController()
+
+        pokemonDetailViewModel.fetchData(args.id)
         observe(pokemonDetailViewModel)
         (requireActivity() as AppCompatActivity).onBackPressedDispatcher.addCallback(
             this,
@@ -70,24 +50,9 @@ class PokemonDetailFragment : Fragment() {
             })
     }
 
-    private fun showStatusBar() {
-        activity?.let {
-            it.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-            val decor = it.window.decorView
-            decor.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_IMMERSIVE)
-        }
-    }
-
-    private fun hideStatusBar() {
-        activity?.let {
-            it.window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-            val decor = it.window.decorView
-            decor.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-                    or View.SYSTEM_UI_FLAG_IMMERSIVE)
-        }
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 
     private fun setupController() {
@@ -114,7 +79,6 @@ class PokemonDetailFragment : Fragment() {
     }
 
     private fun toPrev() {
-        hideStatusBar()
         navigator.toPrev()
     }
 }

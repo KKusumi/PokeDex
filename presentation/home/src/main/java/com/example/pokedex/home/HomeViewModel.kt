@@ -1,8 +1,10 @@
 package com.example.pokedex.home
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
@@ -22,6 +24,11 @@ class HomeViewModel(
     private val _pokemonListResponse: MutableLiveData<PokemonListResponse> = MutableLiveData()
     val pokemonListResponse: LiveData<PokemonListResponse>
         get() = _pokemonListResponse
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun onCreate() {
+        fetchData()
+    }
 
     fun fetchData() {
         viewModelScope.launch {

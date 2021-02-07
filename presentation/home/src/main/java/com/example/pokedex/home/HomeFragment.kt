@@ -1,11 +1,8 @@
 package com.example.pokedex.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -16,48 +13,34 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private lateinit var binding: FragmentHomeBinding
-    private val homeViewModel: HomeViewModel by viewModel()
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: HomeViewModel by viewModel()
     private var controller: HomeController? = null
     private val navigator: HomeNavigator by inject { parametersOf(parentFragment?.findNavController()) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate<FragmentHomeBinding>(
-            inflater,
-            R.layout.fragment_home,
-            container,
-            false
-        ).apply {
-            this.viewModel = homeViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentHomeBinding.bind(view).apply {
+            this.viewModel = viewModel
 
-            /**
-             * これがないと、ViewModelのLiveDataにデータを設定してもレイアウトに反映されない。
-             * よく忘れがちなので注意。
-             */
+            // これがないと、ViewModelのLiveDataにデータを設定してもレイアウトに反映されない。
             this.lifecycleOwner = this@HomeFragment
         }
+        // ViewModel側でFragmentのライフサイクルに応じて呼ばれるメソッドを使えるようになる。
+        lifecycle.addObserver(viewModel)
 
-        /**
-         * ViewModel側で、Fragmentのライフサイクルに応じて呼ばれるメソッドを使えるようになる。
-         */
-        lifecycle.addObserver(homeViewModel)
-
-        homeViewModel.fetchData()
-
-        return binding.root
+        observe(viewModel)
+        setupController()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        observeState(homeViewModel)
-        observeEvent(homeViewModel)
-        setupController()
+    override fun onDestroyView() {
+        binding.recyclerView.clear()
+        binding.recyclerView.recycledViewPool.clear()
+        _binding = null
+        super.onDestroyView()
     }
 
     private fun setupController() {
@@ -71,16 +54,11 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun observeState(viewModel: HomeViewModel) {
+    private fun observe(viewModel:HomeViewModel) {
         viewModel.run {
-            this.pokemonListResponse.observe(viewLifecycleOwner, Observer {
+            this.pokemonListResponse.observe(viewLifecycleOwner, {
                 controller?.setData(it)
             })
-        }
-    }
-
-    private fun observeEvent(viewModel: HomeViewModel) {
-        viewModel.run {
             this.showErrorCommand.observe(viewLifecycleOwner, EventObserver { message ->
                 context?.let { context ->
                     AlertDialog.Builder(context)

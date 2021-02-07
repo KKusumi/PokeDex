@@ -1,4 +1,4 @@
-package com.example.pokedex.util.ext
+package com.example.pokedex.common.ext
 
 import android.content.res.Resources
 

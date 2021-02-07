@@ -36,7 +36,7 @@ class RetryView @JvmOverloads constructor(
 
 object RetryViewBindings {
 
-    @BindingAdapter("app:uiState") // app:uiStateという属性名で設定できるようになる。
+    @BindingAdapter("uiState") // app:uiStateという属性名で設定できるようになる。
     @JvmStatic
     fun setState(retryView: RetryView, uiState: UiState?) { // 第一引数：どのクラスのViewに適用するか。 第二引数：受け取る値の型
         uiState?.let {
@@ -44,7 +44,7 @@ object RetryViewBindings {
         }
     }
 
-    @BindingAdapter("app:onRetry")
+    @BindingAdapter("onRetry")
     @JvmStatic
     fun setRetry(retryView: RetryView, onClickRetry: (() -> Unit)?) {
         retryView.setOnClickRetryListener {
