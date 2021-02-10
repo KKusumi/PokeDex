@@ -55,7 +55,7 @@
                 android:layout_marginStart="@dimen/space_x6"
                 android:layout_marginTop="@dimen/space_x6"
                 android:layout_marginEnd="@dimen/space_x6"
-                app:imageFromUrl="@{viewModel.pokemonDetailView.frontImageUrl}"
+                app:imageFromUrl="@{viewModel.pokemonDetailView.imageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

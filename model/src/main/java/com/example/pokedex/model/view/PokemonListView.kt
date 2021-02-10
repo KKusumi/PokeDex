@@ -35,11 +35,8 @@ data class PokemonListView(
         val number
             get() = generatePokemonNumber(url)
 
-        val frontImageUrl
-            get() = generatePokemonFrontImageUrl(number.toString())
-
-        val backImageUrl
-            get() = generatePokemonBackImageUrl(number.toString())
+        val imageUrl
+            get() = generateImageUrl(number.toString())
 
         fun getCamelCaseName(): String = if (name.isEmpty()) {
             ""
@@ -51,10 +48,6 @@ data class PokemonListView(
         private fun generatePokemonNumber(url: String) =
             url.removePrefix("https://pokeapi.co/api/v2/pokemon/").removeSuffix("/").toInt()
 
-        private fun generatePokemonFrontImageUrl(number: String) =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
-
-        private fun generatePokemonBackImageUrl(number: String) =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${number}.png"
+        private fun generateImageUrl(number: String) = "https://github.com/fanzeyi/pokemon.json/blob/master/images/${number.padStart(3, '0')}.png?raw=true"
     }
 }

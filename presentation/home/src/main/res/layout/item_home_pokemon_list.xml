@@ -31,7 +31,7 @@
             android:layout_marginTop="@dimen/space_x2"
             android:layout_marginBottom="@dimen/space_x2"
             android:contentDescription="@null"
-            app:imageFromUrl="@{pokemonListItem.frontImageUrl}"
+            app:imageFromUrl="@{pokemonListItem.imageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

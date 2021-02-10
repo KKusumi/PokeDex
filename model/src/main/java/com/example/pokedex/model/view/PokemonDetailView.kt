@@ -56,11 +56,9 @@ data class PokemonDetailView(
         }
     }
 
-    val frontImageUrl
-        get() = generatePokemonFrontImageUrl(id.toString())
+    val imageUrl
+        get() = generateImageUrl(id.toString())
 
-    val backImageUrl
-        get() = generatePokemonBackImageUrl(id.toString())
 
     fun getCamelCaseName(): String = if (name.isEmpty()) {
         ""
@@ -95,9 +93,6 @@ data class PokemonDetailView(
 
     fun getSpeed() = stats.find { it.stat.name == "speed" }?.baseStat
 
-    private fun generatePokemonFrontImageUrl(number: String) =
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
-
-    private fun generatePokemonBackImageUrl(number: String) =
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${number}.png"
+    private fun generateImageUrl(number: String) =
+        "https://github.com/fanzeyi/pokemon.json/blob/master/images/${number.padStart(3, '0')}.png?raw=true"
 }
