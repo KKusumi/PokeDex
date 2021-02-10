@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.pokedex.common.navigator.HomeNavigator
 import com.example.pokedex.home.databinding.FragmentHomeBinding
-import com.example.pokedex.util.EventObserver
+import com.example.pokedex.common.util.EventObserver
+import com.example.pokedex.shared.ext.changeStatusBarColor
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -34,6 +34,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         observe(viewModel)
         setupController()
+
+        activity?.changeStatusBarColor("#ffffff")
     }
 
     override fun onDestroyView() {

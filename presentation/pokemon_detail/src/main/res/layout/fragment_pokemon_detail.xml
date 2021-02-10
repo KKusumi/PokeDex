@@ -46,7 +46,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:type_half_circle="@{viewModel.pokemon.slot1Type}" />
+                app:type_half_circle="@{viewModel.pokemonDetailView.slot1Type}" />
 
             <ImageView
                 android:id="@+id/image"
@@ -55,7 +55,7 @@
                 android:layout_marginStart="@dimen/space_x6"
                 android:layout_marginTop="@dimen/space_x6"
                 android:layout_marginEnd="@dimen/space_x6"
-                app:imageFromUrl="@{viewModel.pokemon.frontImageUrl}"
+                app:imageFromUrl="@{viewModel.pokemonDetailView.frontImageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -69,7 +69,7 @@
                 android:layout_marginTop="@dimen/space_x1"
                 android:gravity="center"
                 android:lineHeight="13dp"
-                android:text='@{"No." + Integer.toString(viewModel.pokemon.id)}'
+                android:text='@{"No." + Integer.toString(viewModel.pokemonDetailView.id)}'
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
                 android:layout_marginStart="@dimen/space_x2"
                 android:layout_marginTop="@dimen/space_x1"
                 android:lineHeight="22sp"
-                android:text="@{viewModel.pokemon.getCamelCaseName()}"
+                android:text="@{viewModel.pokemonDetailView.getCamelCaseName()}"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"

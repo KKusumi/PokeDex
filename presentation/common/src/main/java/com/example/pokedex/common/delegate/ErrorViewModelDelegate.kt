@@ -6,7 +6,7 @@ import com.example.pokedex.api.response.NetworkException
 import com.example.pokedex.api.response.PokeDexException
 import com.example.pokedex.api.response.UndefinedException
 import com.example.pokedex.model.model.UiState
-import com.example.pokedex.util.Event
+import com.example.pokedex.common.util.Event
 
 interface ErrorViewModelDelegate {
     val uiState: MutableLiveData<UiState>

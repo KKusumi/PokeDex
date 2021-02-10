@@ -5,13 +5,13 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.common.navigator.PokemonDetailNavigator
 import com.example.pokedex.common.view.MySnapHelper
+import com.example.pokedex.shared.ext.changeStatusBarColor
 import com.example.pokemon_detail.databinding.FragmentPokemonDetailBinding
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -42,7 +42,7 @@ class PokemonDetailFragment : Fragment(R.layout.fragment_pokemon_detail) {
         pokemonDetailViewModel.fetchData(args.id)
         observe(pokemonDetailViewModel)
         (requireActivity() as AppCompatActivity).onBackPressedDispatcher.addCallback(
-            this,
+            viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     toPrev()
@@ -72,9 +72,10 @@ class PokemonDetailFragment : Fragment(R.layout.fragment_pokemon_detail) {
 
     private fun observe(viewModel: PokemonDetailViewModel) {
         viewModel.run {
-            this.pokemon.observe(viewLifecycleOwner, Observer {
+            this.pokemonDetailView.observe(viewLifecycleOwner) {
                 controller?.setData(it)
-            })
+                activity?.changeStatusBarColor(it.types[0].type.colorCode)
+            }
         }
     }
 
