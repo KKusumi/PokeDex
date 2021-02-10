@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="pokemon"
-            type="com.example.pokedex.model.Pokemon" />
+            name="pokemonDetailView"
+            type="com.example.pokedex.model.view.PokemonDetailView" />
     </data>
 
     <LinearLayout
@@ -57,7 +57,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_hp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:status_bar_width="@{pokemon.hp}"
+                app:status_bar_width="@{pokemonDetailView.hp}"
                 tools:layout_width="128dp" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.hp)}"
+                android:text="@{Integer.toString(pokemonDetailView.hp)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -121,7 +121,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_attack"
                 app:layout_constraintTop_toTopOf="parent"
-                app:status_bar_width="@{pokemon.attack}"
+                app:status_bar_width="@{pokemonDetailView.attack}"
                 tools:layout_width="128dp" />
 
             <TextView
@@ -132,7 +132,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.attack)}"
+                android:text="@{Integer.toString(pokemonDetailView.attack)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -185,7 +185,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_defense"
                 app:layout_constraintTop_toTopOf="parent"
-                app:status_bar_width="@{pokemon.defense}"
+                app:status_bar_width="@{pokemonDetailView.defense}"
                 tools:layout_width="128dp" />
 
             <TextView
@@ -196,7 +196,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.defense)}"
+                android:text="@{Integer.toString(pokemonDetailView.defense)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -249,7 +249,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_special_attack"
                 app:layout_constraintTop_toTopOf="parent"
-                app:status_bar_width="@{pokemon.specialAttack}"
+                app:status_bar_width="@{pokemonDetailView.specialAttack}"
                 tools:layout_width="128dp" />
 
             <TextView
@@ -260,7 +260,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.specialAttack)}"
+                android:text="@{Integer.toString(pokemonDetailView.specialAttack)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -313,7 +313,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/text_special_defense"
                 app:layout_constraintTop_toTopOf="parent"
-                app:status_bar_width="@{pokemon.specialDefense}"
+                app:status_bar_width="@{pokemonDetailView.specialDefense}"
                 tools:layout_width="128dp" />
 
             <TextView
@@ -324,7 +324,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.specialDefense)}"
+                android:text="@{Integer.toString(pokemonDetailView.specialDefense)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -379,7 +379,7 @@
                 app:layout_constraintEnd_toStartOf="@id/text_speed"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintTop_toTopOf="parent"
-                app:status_bar_width="@{pokemon.speed}"
+                app:status_bar_width="@{pokemonDetailView.speed}"
                 tools:layout_width="128dp" />
 
             <TextView
@@ -390,7 +390,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{Integer.toString(pokemon.speed)}"
+                android:text="@{Integer.toString(pokemonDetailView.speed)}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"

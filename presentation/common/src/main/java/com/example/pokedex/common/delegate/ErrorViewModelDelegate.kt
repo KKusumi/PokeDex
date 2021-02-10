@@ -2,10 +2,10 @@ package com.example.pokedex.common.delegate
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.pokedex.model.NetworkException
-import com.example.pokedex.model.PokeDexException
-import com.example.pokedex.model.UiState
-import com.example.pokedex.model.UndefinedException
+import com.example.pokedex.api.response.NetworkException
+import com.example.pokedex.api.response.PokeDexException
+import com.example.pokedex.api.response.UndefinedException
+import com.example.pokedex.model.model.UiState
 import com.example.pokedex.util.Event
 
 interface ErrorViewModelDelegate {

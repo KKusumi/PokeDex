@@ -9,6 +9,7 @@ repositories {
 dependencies {
     implementation project(':data:api')
     implementation project(':model')
+    implementation project(':response_model')
 
     // Kotlin Result
     implementation Dep.Other.KotlinResult.kotlinResult

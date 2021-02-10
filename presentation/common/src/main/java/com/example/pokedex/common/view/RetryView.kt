@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.example.pokedex.common.R
 import com.example.pokedex.common.databinding.LayoutRetryBinding
-import com.example.pokedex.model.UiState
+import com.example.pokedex.model.model.UiState
 
 class RetryView @JvmOverloads constructor(
     context: Context,

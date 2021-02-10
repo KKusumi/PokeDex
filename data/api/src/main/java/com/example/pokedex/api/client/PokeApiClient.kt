@@ -1,10 +1,10 @@
 package com.example.pokedex.api.client
 
 import com.example.pokedex.api.api.PokeApi
-import com.example.pokedex.model.PokeDexApiException
-import com.example.pokedex.model.PokeDexApiResponseException
-import com.example.pokedex.model.Pokemon
-import com.example.pokedex.model.PokemonListResponse
+import com.example.pokedex.api.response.PokeDexApiException
+import com.example.pokedex.api.response.PokeDexApiResponseException
+import com.example.response_model.PokemonDetailResponse
+import com.example.response_model.PokemonListResponse
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
@@ -16,7 +16,7 @@ interface PokeApiClient {
     }
 
     suspend fun fetchPokemonList(limit: Int = TOTAL_POKEMONS_COUNT): Result<PokemonListResponse?, PokeDexApiException>
-    suspend fun fetchPokemonDetail(id: Int): Result<Pokemon?, PokeDexApiException>
+    suspend fun fetchPokemonDetail(id: Int): Result<PokemonDetailResponse?, PokeDexApiException>
 }
 
 internal class PokeApiClientImpl(
@@ -27,7 +27,7 @@ internal class PokeApiClientImpl(
         return execute { pokeApi.pokemon(limit) }
     }
 
-    override suspend fun fetchPokemonDetail(id: Int): Result<Pokemon?, PokeDexApiException> {
+    override suspend fun fetchPokemonDetail(id: Int): Result<PokemonDetailResponse?, PokeDexApiException> {
         return execute { pokeApi.pokemonDetail(id) }
     }
 

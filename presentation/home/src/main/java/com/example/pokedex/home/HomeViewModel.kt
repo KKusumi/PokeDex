@@ -8,9 +8,9 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
-import com.example.pokedex.model.PokemonListResponse
-import com.example.pokedex.model.UiState
 import com.example.pokedex.domain.GetPokemonListUseCase
+import com.example.pokedex.model.model.UiState
+import com.example.pokedex.model.view.PokemonListView
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import kotlinx.coroutines.launch
@@ -22,8 +22,8 @@ class HomeViewModel(
     ErrorViewModelDelegate by errorViewModelDelegate {
 
     // State
-    private val _pokemonListResponse: MutableLiveData<PokemonListResponse> = MutableLiveData()
-    val pokemonListResponse: LiveData<PokemonListResponse>
+    private val _pokemonListResponse: MutableLiveData<PokemonListView> = MutableLiveData()
+    val pokemonListResponse: LiveData<PokemonListView>
         get() = _pokemonListResponse
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)

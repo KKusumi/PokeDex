@@ -4,6 +4,7 @@ apply from: "${rootDir.absolutePath}/android_common_build.gradle"
 
 dependencies {
     implementation project(':model')
+    implementation project(':response_model')
 
     // OkHttp
     implementation Dep.Square.OkHttp.okHttp

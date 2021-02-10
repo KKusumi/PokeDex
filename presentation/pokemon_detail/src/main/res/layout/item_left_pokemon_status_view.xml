@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="pokemon"
-            type="com.example.pokedex.model.Pokemon" />
+            name="pokemonDetailView"
+            type="com.example.pokedex.model.view.PokemonDetailView" />
     </data>
 
     <LinearLayout
@@ -51,7 +51,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemon.getTypesText()}"
+                android:text="@{pokemonDetailView.getTypesText()}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="どく・ドラゴン" />
@@ -95,7 +95,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text='@{pokemon.height + "m"}'
+                android:text='@{pokemonDetailView.height + "m"}'
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="20.0m" />
@@ -139,7 +139,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text='@{pokemon.weight + "kg"}'
+                android:text='@{pokemonDetailView.weight + "kg"}'
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="950.0kg" />
@@ -183,7 +183,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemon.slot1AbilityText}"
+                android:text="@{pokemonDetailView.slot1AbilityText}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="プレッシャー" />
@@ -227,7 +227,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemon.slot2AbilityText}"
+                android:text="@{pokemonDetailView.slot2AbilityText}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="なし" />
@@ -272,7 +272,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemon.hideAbilityText}"
+                android:text="@{pokemonDetailView.hideAbilityText}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="なし" />

@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="pokemon"
-            type="com.example.pokedex.model.PokemonListResponse.Pokemon" />
+            name="pokemonListItem"
+            type="com.example.pokedex.model.view.PokemonListView.PokemonListItem" />
 
         <variable
             name="onClickItem"
@@ -30,7 +30,7 @@
             android:layout_marginTop="@dimen/space_x2"
             android:layout_marginBottom="@dimen/space_x2"
             android:contentDescription="@null"
-            app:imageFromUrl="@{pokemon.frontImageUrl}"
+            app:imageFromUrl="@{pokemonListItem.frontImageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
             android:ellipsize="end"
             android:lineHeight="13sp"
             android:singleLine="true"
-            android:text='@{"No." + pokemon.number}'
+            android:text='@{"No." + pokemonListItem.number}'
             android:textColor="@color/black"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@id/image"
@@ -57,7 +57,7 @@
             android:layout_marginTop="@dimen/space_x1"
             android:gravity="center_vertical"
             android:lineHeight="22sp"
-            android:text="@{pokemon.getCamelCaseName()}"
+            android:text="@{pokemonListItem.getCamelCaseName()}"
             android:textColor="@color/black"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="@id/text_number"

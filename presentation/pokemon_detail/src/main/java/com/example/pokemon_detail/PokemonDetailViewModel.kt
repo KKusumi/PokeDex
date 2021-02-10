@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
-import com.example.pokedex.model.Pokemon
-import com.example.pokedex.model.UiState
 import com.example.pokedex.domain.GetPokemonDetailUseCase
+import com.example.pokedex.model.model.UiState
+import com.example.pokedex.model.view.PokemonDetailView
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import kotlinx.coroutines.launch
@@ -24,8 +24,8 @@ class PokemonDetailViewModel(
     }
 
     // State
-    private val _pokemon: MutableLiveData<Pokemon> = MutableLiveData()
-    val pokemon: LiveData<Pokemon>
+    private val _pokemon: MutableLiveData<PokemonDetailView> = MutableLiveData()
+    val pokemon: LiveData<PokemonDetailView>
         get() = _pokemon
 
     private var _id: Int = DEFAULT_ID

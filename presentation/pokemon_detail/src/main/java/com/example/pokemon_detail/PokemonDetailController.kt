@@ -1,19 +1,19 @@
 package com.example.pokemon_detail
 
 import com.airbnb.epoxy.TypedEpoxyController
-import com.example.pokedex.model.Pokemon
+import com.example.pokedex.model.view.PokemonDetailView
 
-class PokemonDetailController : TypedEpoxyController<Pokemon>() {
+class PokemonDetailController : TypedEpoxyController<PokemonDetailView>() {
 
-    override fun buildModels(data: Pokemon?) {
+    override fun buildModels(data: PokemonDetailView?) {
         data?.let {
             leftPokemonStatusView {
                 id(modelCountBuiltSoFar)
-                pokemon(it)
+                pokemonDetailView(it)
             }
             rightPokemonStatusView {
                 id(modelCountBuiltSoFar)
-                pokemon(it)
+                pokemonDetailView(it)
             }
         }
     }

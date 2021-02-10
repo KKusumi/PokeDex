@@ -7,11 +7,11 @@
 
         <import type="android.view.View" />
 
-        <import type="com.example.pokedex.model.UiState" />
+        <import type="com.example.pokedex.model.model.UiState" />
 
         <variable
             name="uiState"
-            type="com.example.pokedex.model.UiState" />
+            type="com.example.pokedex.model.model.UiState" />
 
         <variable
             name="onClickRetry"

@@ -1,7 +1,7 @@
 package com.example.pokedex.api.api
 
-import com.example.pokedex.model.Pokemon
-import com.example.pokedex.model.PokemonListResponse
+import com.example.response_model.PokemonDetailResponse
+import com.example.response_model.PokemonListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -13,5 +13,5 @@ interface PokeApi {
     suspend fun pokemon(@Query("limit") limit: Int): Response<PokemonListResponse>
 
     @GET("pokemon/{id}")
-    suspend fun pokemonDetail(@Path("id") id: Int): Response<Pokemon>
+    suspend fun pokemonDetail(@Path("id") id: Int): Response<PokemonDetailResponse>
 }

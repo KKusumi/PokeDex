@@ -46,7 +46,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupController() {
         controller = HomeController(
             onClickItem = {
-                navigator.toPokemonDetail(it.number)
+                navigator.toPokemonDetail(it)
             }
         )
         controller?.let { it ->
