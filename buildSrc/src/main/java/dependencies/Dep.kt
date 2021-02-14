@@ -13,6 +13,13 @@ object Dep {
             val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
             val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
         }
+
+        object Room {
+            private val version = "2.2.6"
+            val runtime = "androidx.room:room-runtime:$version"
+            val conpiler = "androidx.room:room-compiler:$version"
+            val ktx = "androidx.room:room-ktx:$version"
+        }
     }
 
     object Google {
