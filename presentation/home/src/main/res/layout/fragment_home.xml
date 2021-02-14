@@ -48,16 +48,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <com.example.pokedex.common.view.RetryView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="@{viewModel.uiState instanceof UiState.Retry ? View.VISIBLE : View.GONE}"
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:onRetry="@{viewModel::fetchData}"
-            app:uiState="@{viewModel.uiState}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

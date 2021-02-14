@@ -1,6 +1,6 @@
 package com.example.pokedex.domain
 
-import com.example.pokedex.api.response.PokeDexException
+import com.example.pokedex.model.model.PokeDexException
 import com.example.pokedex.model.view.PokemonDetailView
 import com.example.repository.PokemonDetailRepository
 import com.github.michaelbull.result.Result

@@ -1,8 +1,8 @@
 package com.example.repository
 
 import com.example.pokedex.api.client.PokeApiClient
-import com.example.pokedex.api.response.EmptyResponseBodyException
-import com.example.pokedex.api.response.PokeDexException
+import com.example.pokedex.model.model.EmptyResponseBodyException
+import com.example.pokedex.model.model.PokeDexException
 import com.example.pokedex.model.view.PokemonDetailView
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok

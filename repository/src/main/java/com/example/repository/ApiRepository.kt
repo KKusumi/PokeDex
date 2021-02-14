@@ -1,9 +1,9 @@
 package com.example.repository
 
-import com.example.pokedex.api.response.NetworkException
-import com.example.pokedex.api.response.PokeDexApiException
-import com.example.pokedex.api.response.PokeDexException
-import com.example.pokedex.api.response.UndefinedException
+import com.example.pokedex.model.model.NetworkException
+import com.example.pokedex.model.model.PokeDexApiException
+import com.example.pokedex.model.model.PokeDexException
+import com.example.pokedex.model.model.UndefinedException
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Result
 import java.net.SocketTimeoutException

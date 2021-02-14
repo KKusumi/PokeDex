@@ -1,8 +1,8 @@
 package com.example.pokedex.api.client
 
 import com.example.pokedex.api.api.PokeApi
-import com.example.pokedex.api.response.PokeDexApiException
-import com.example.pokedex.api.response.PokeDexApiResponseException
+import com.example.pokedex.model.model.PokeDexApiException
+import com.example.pokedex.model.model.PokeDexApiResponseException
 import com.example.response_model.PokemonDetailResponse
 import com.example.response_model.PokemonListResponse
 import com.github.michaelbull.result.Err
@@ -39,11 +39,11 @@ internal class PokeApiClientImpl(
                 if (it.isSuccessful) {
                     Ok(it.body())
                 } else {
-                    Err(PokeDexApiResponseException())
+                    Err(PokeDexApiResponseException(it.errorBody().toString()))
                 }
             },
             onFailure = {
-                Err(PokeDexApiException())
+                Err(PokeDexApiException(it))
             }
         )
     }

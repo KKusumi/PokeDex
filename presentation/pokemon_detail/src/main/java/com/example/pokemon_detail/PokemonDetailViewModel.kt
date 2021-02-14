@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
-import com.example.pokedex.common.util.Event
 import com.example.pokedex.domain.GetPokemonDetailUseCase
 import com.example.pokedex.model.model.UiState
 import com.example.pokedex.model.view.PokemonDetailView

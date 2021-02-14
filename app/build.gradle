@@ -41,7 +41,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':domain')
     implementation project(':repository')
     implementation project(':data:api')
@@ -52,6 +51,9 @@ dependencies {
     implementation project(':presentation:common')
     implementation project(':presentation:home')
     implementation project(':presentation:pokemon_detail')
+
+    // Kotlin
+    implementation Dep.Kotlin.stdLib
 
     // AndroidX
     implementation Dep.AndroidX.constraintLayout

@@ -2,11 +2,23 @@ package dependencies
 
 object Dep {
 
+    object Plugin {
+        val gradle = "com.android.tools.build:gradle:4.1.2"
+        val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+        val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3"
+    }
+
     object AndroidX {
         val appCompat = "androidx.appcompat:appcompat:1.2.0"
         val coreKtx = "androidx.core:core-ktx:1.3.2"
         val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
-        val lifecycleExt = "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+        object Lifecycle {
+            val version = "2.2.0"
+            val liveData = "androidx.lifecycle:lifecycle-livedata:$version"
+            val liveDataCoreKtx = "androidx.lifecycle:lifecycle-livedata-core-ktx:$version"
+            val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
+        }
 
         object Navigation {
             private val version = "2.3.3"
@@ -25,6 +37,17 @@ object Dep {
     object Google {
         val material = "com.google.android.material:material:1.3.0"
         val gson = "com.google.code.gson:gson:2.8.6"
+    }
+
+    object Kotlin {
+        val version = "1.4.10"
+        val stdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
+
+        object Coroutine {
+            val version = "1.4.2"
+            val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+            val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+        }
     }
 
     object Koin {

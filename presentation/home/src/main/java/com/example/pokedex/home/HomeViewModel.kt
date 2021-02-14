@@ -1,19 +1,21 @@
 package com.example.pokedex.home
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
+import com.example.pokedex.common.ext.combine
+import com.example.pokedex.common.ext.toLoadingState
 import com.example.pokedex.domain.GetPokemonListUseCase
-import com.example.pokedex.model.model.UiState
+import com.example.pokedex.model.model.LoadState
+import com.example.pokedex.model.model.PokeDexException
 import com.example.pokedex.model.view.PokemonListView
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
-import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val getPokemonListUseCase: GetPokemonListUseCase,
@@ -21,28 +23,50 @@ class HomeViewModel(
 ) : ViewModel(), LifecycleObserver,
     ErrorViewModelDelegate by errorViewModelDelegate {
 
-    // State
-    private val _pokemonListResponse: MutableLiveData<PokemonListView> = MutableLiveData()
-    val pokemonListResponse: LiveData<PokemonListView>
-        get() = _pokemonListResponse
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate() {
-        fetchData()
+    data class UiModel(
+        val isLoading: Boolean,
+        var error: PokeDexException?,
+        val pokemonListView: PokemonListView
+    ) {
+        companion object {
+            val EMPTY = UiModel(false, null, PokemonListView(results = listOf()))
+        }
     }
 
-    fun fetchData() {
-        viewModelScope.launch {
-            uiState.postValue(UiState.Loading)
-            when (val result = getPokemonListUseCase.execute()) {
+    private val pokemonListViewLoadState: LiveData<LoadState<PokemonListView>> =
+        liveData(context = viewModelScope.coroutineContext) {
+            emitSource(
+                getPokemonListUseCase.pokemonListView()
+                    .toLoadingState()
+                    .asLiveData(context = viewModelScope.coroutineContext)
+            )
+
+            when (val result = getPokemonListUseCase.refresh()) {
                 is Ok -> {
-                    uiState.postValue(UiState.Loaded)
-                    _pokemonListResponse.postValue(result.value)
+                    // NOP
                 }
                 is Err -> {
-                    handleError(result.error)
+                    uiModel.value?.error = result.error
                 }
             }
         }
+
+    val uiModel: MutableLiveData<UiModel> = combine(
+        initialValue = UiModel.EMPTY,
+        liveData1 = pokemonListViewLoadState
+    ) { current, loadState ->
+        val pokemonListView = when (loadState) {
+            is LoadState.Loaded -> {
+                loadState.value
+            }
+            else -> {
+                current.pokemonListView
+            }
+        }
+        UiModel(
+            isLoading = loadState.isLoading,
+            error = loadState.getErrorIfExists(),
+            pokemonListView = pokemonListView
+        )
     }
 }

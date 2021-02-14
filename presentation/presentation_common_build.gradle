@@ -14,7 +14,11 @@ dependencies {
     implementation Dep.AndroidX.appCompat
     implementation Dep.AndroidX.coreKtx
     implementation Dep.AndroidX.constraintLayout
-    implementation Dep.AndroidX.lifecycleExt
+    // Lifecycle
+    implementation Dep.AndroidX.Lifecycle.liveData
+    implementation Dep.AndroidX.Lifecycle.liveDataCoreKtx
+    implementation Dep.AndroidX.Lifecycle.liveDataKtx
+    // Navigation
     implementation Dep.AndroidX.Navigation.navigationFragmentKtx
     implementation Dep.AndroidX.Navigation.navigationUiKtx
 
