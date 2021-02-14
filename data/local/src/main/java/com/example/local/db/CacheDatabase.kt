@@ -9,7 +9,8 @@ import com.example.local.db.entitiy.PokemonListItemEntityImpl
     entities = [
         (PokemonListItemEntityImpl::class)
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 internal abstract class CacheDatabase: RoomDatabase() {
     abstract fun pokemonListItemDao(): PokemonListItemDao

@@ -8,9 +8,14 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     factory {
-        PokemonListRepositoryImpl(get()) as PokemonListRepository
+        PokemonListRepositoryImpl(
+            pokeApiClient = get(),
+            pokemonListItemDatabase = get()
+        ) as PokemonListRepository
     }
     factory {
-        PokemonDetailRepositoryImpl(get()) as PokemonDetailRepository
+        PokemonDetailRepositoryImpl(
+            get()
+        ) as PokemonDetailRepository
     }
 }

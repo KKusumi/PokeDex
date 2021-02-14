@@ -1,5 +1,7 @@
 package com.example.repository
 
+import com.example.local.db.PokemonListItemDatabase
+import com.example.local.db.entitiy.PokemonListItemEntity
 import com.example.pokedex.api.client.PokeApiClient
 import com.example.pokedex.api.response.EmptyResponseBodyException
 import com.example.pokedex.api.response.PokeDexException
@@ -14,7 +16,8 @@ interface PokemonListRepository {
 }
 
 internal class PokemonListRepositoryImpl(
-    private val pokeApiClient: PokeApiClient
+    private val pokeApiClient: PokeApiClient,
+    private val pokemonListItemDatabase: PokemonListItemDatabase
 ) : ApiRepository(), PokemonListRepository {
 
     override suspend fun fetchData(): Result<PokemonListView, PokeDexException> {

@@ -8,6 +8,7 @@ repositories {
 
 dependencies {
     implementation project(':data:api')
+    implementation project(':data:local')
     implementation project(':model')
     implementation project(':response_model')
 
