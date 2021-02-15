@@ -2,6 +2,7 @@ package com.example.local.di
 
 import androidx.room.Room
 import com.example.local.db.CacheDatabase
+import com.example.local.db.PokemonDetailDatabase
 import com.example.local.db.PokemonListItemDatabase
 import com.example.local.db.RoomDatabase
 import org.koin.android.ext.koin.androidApplication
@@ -20,5 +21,11 @@ val databaseModule = module {
         RoomDatabase(
             cacheDatabase = get()
         ) as PokemonListItemDatabase
+    }
+
+    single {
+        RoomDatabase(
+            cacheDatabase = get()
+        ) as PokemonDetailDatabase
     }
 }

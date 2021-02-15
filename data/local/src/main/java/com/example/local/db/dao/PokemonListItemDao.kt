@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 internal abstract class PokemonListItemDao {
-    @Query("SELECT * FROM pokemonListItem")
+    @Query("SELECT * FROM pokemon_list_item")
     abstract fun allPokemonListItem(): Flow<List<PokemonListItemEntityImpl>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(pokemonListItem: List<PokemonListItemEntityImpl>)
 
-    @Query("DELETE FROM pokemonListItem")
+    @Query("DELETE FROM pokemon_list_item")
     abstract fun deleteAll()
 }

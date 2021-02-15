@@ -3,14 +3,14 @@ package com.example.local.db.entitiy
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-interface PokemonListItemEntity {
+interface TypeXEntity {
     val name: String
     val url: String
 }
 
-@Entity(tableName = "pokemon_list_item")
-internal data class PokemonListItemEntityImpl(
+@Entity(tableName = "type_x")
+internal data class TypeXEntityImpl(
     @PrimaryKey
     override val name: String,
     override val url: String
-): PokemonListItemEntity
+): TypeXEntity
