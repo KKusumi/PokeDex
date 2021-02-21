@@ -11,5 +11,6 @@ dependencies {
     implementation project(':model')
     implementation project(':repository')
 
+    // KotlinResult
     implementation Dep.Other.KotlinResult.kotlinResult
 }

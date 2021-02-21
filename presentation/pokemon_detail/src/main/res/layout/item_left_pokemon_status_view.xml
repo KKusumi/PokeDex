@@ -51,7 +51,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemonDetailView.getTypesText()}"
+                android:text="@{pokemonDetailView.type1}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="どく・ドラゴン" />
@@ -183,7 +183,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemonDetailView.slot1AbilityText}"
+                android:text="@{pokemonDetailView.ability1}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="プレッシャー" />
@@ -227,7 +227,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemonDetailView.slot2AbilityText}"
+                android:text="@{pokemonDetailView.ability2}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="なし" />
@@ -272,7 +272,7 @@
                 android:layout_marginEnd="@dimen/space_x5"
                 android:gravity="end"
                 android:lineHeight="20sp"
-                android:text="@{pokemonDetailView.hideAbilityText}"
+                android:text="@{pokemonDetailView.hiddenAbility}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 tools:text="なし" />

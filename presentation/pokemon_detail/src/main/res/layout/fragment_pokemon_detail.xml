@@ -5,13 +5,16 @@
 
     <data>
 
+        <import type="com.example.pokedex.shared.ext.StringExtKt" />
+
         <variable
-            name="viewModel"
-            type="com.example.pokemon_detail.PokemonDetailViewModel" />
+            name="pokemonDetailView"
+            type="com.example.pokedex.model.view.PokemonDetailView" />
 
         <variable
             name="onClickBack"
             type="android.view.View.OnClickListener" />
+
     </data>
 
     <ScrollView
@@ -28,25 +31,25 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="@dimen/space_x2"
                 android:layout_marginTop="@dimen/space_x4"
+                android:contentDescription="@null"
                 android:foreground="@drawable/ripple_white"
                 android:onClick="@{onClickBack}"
                 android:src="@drawable/ic_back"
                 android:translationZ="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@null" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/image_type_color_half_circle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:contentDescription="@null"
                 android:adjustViewBounds="true"
+                android:contentDescription="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:type_half_circle="@{viewModel.pokemonDetailView.slot1Type}" />
+                app:type_half_circle="@{StringExtKt.convertToCamelCase(pokemonDetailView.type1)}" />
 
             <ImageView
                 android:id="@+id/image"
@@ -55,11 +58,11 @@
                 android:layout_marginStart="@dimen/space_x6"
                 android:layout_marginTop="@dimen/space_x6"
                 android:layout_marginEnd="@dimen/space_x6"
-                app:imageFromUrl="@{viewModel.pokemonDetailView.imageUrl}"
+                android:contentDescription="@null"
+                app:imageFromUrl="@{pokemonDetailView.imageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@null" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_id"
@@ -69,7 +72,7 @@
                 android:layout_marginTop="@dimen/space_x1"
                 android:gravity="center"
                 android:lineHeight="13dp"
-                android:text='@{"No." + Integer.toString(viewModel.pokemonDetailView.id)}'
+                android:text='@{"No." + Integer.toString(pokemonDetailView.id)}'
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +86,7 @@
                 android:layout_marginStart="@dimen/space_x2"
                 android:layout_marginTop="@dimen/space_x1"
                 android:lineHeight="22sp"
-                android:text="@{viewModel.pokemonDetailView.getCamelCaseName()}"
+                android:text="@{StringExtKt.convertToCamelCase(pokemonDetailView.name)}"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,11 +99,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_x3"
                 android:layout_marginBottom="@dimen/space_x4_5"
+                android:orientation="horizontal"
                 android:splitMotionEvents="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_name" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

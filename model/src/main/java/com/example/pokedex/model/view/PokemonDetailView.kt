@@ -7,11 +7,11 @@ import com.example.response_model.PokemonDetailResponse
 data class PokemonDetailView(
     val id: Int,
     val name: String,
-    val type1: TypeX,
-    val type2: TypeX?,
-    val ability1: AbilityX,
-    val ability2: AbilityX?,
-    val hiddenAbility: AbilityX?,
+    val type1: String,
+    val type2: String?,
+    val ability1: String,
+    val ability2: String?,
+    val hiddenAbility: String?,
     val height: Int,
     val weight: Int,
     val hp: Int,
@@ -23,24 +23,43 @@ data class PokemonDetailView(
 ) {
 
     companion object {
+
+        val Empty = PokemonDetailView(
+            id = 0,
+            name = "",
+            type1 = "",
+            type2 = null,
+            ability1 = "",
+            ability2 = null,
+            hiddenAbility = null,
+            height = 0,
+            weight = 0,
+            hp = 0,
+            attack = 0,
+            defense = 0,
+            specialAttack = 0,
+            specialDefense = 0,
+            speed = 0
+        )
+
         fun transform(pokemonDetailResponse: PokemonDetailResponse): PokemonDetailView {
             return PokemonDetailView(
                 id = pokemonDetailResponse.id,
                 name = pokemonDetailResponse.name ?: "",
-                type1 = TypeX.transform(requireNotNull(pokemonDetailResponse.types.find { it.slot == 1 }?.type)),
+                type1 = TypeX.transform(requireNotNull(pokemonDetailResponse.types.find { it.slot == 1 }?.type)).name,
                 type2 = pokemonDetailResponse.types
                     .find { it.slot == 2 }
                     ?.type
-                    ?.let { TypeX.transform(it) },
-                ability1 = AbilityX.transform(pokemonDetailResponse.abilities[0].ability),
+                    ?.let { TypeX.transform(it).name },
+                ability1 = AbilityX.transform(pokemonDetailResponse.abilities[0].ability).name,
                 ability2 = pokemonDetailResponse.abilities
                     .elementAtOrNull(1)
                     ?.ability
-                    ?.let { AbilityX.transform(it) },
+                    ?.let { AbilityX.transform(it).name },
                 hiddenAbility = pokemonDetailResponse.abilities
                     .elementAtOrNull(2)
                     ?.ability
-                    ?.let { AbilityX.transform(it) },
+                    ?.let { AbilityX.transform(it).name },
                 height = pokemonDetailResponse.height,
                 weight = pokemonDetailResponse.weight,
                 hp = pokemonDetailResponse.stats.find { it.stat.name == "hp" }?.base_stat ?: 0,

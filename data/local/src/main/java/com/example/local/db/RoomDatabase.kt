@@ -10,12 +10,13 @@ import com.example.pokedex.model.view.PokemonListView.PokemonListItem
 import kotlinx.coroutines.flow.Flow
 
 interface PokemonListItemDatabase {
-    fun pokemonListItems(): Flow<List<PokemonListItemEntity>>
+    suspend fun pokemonListItems(): Flow<List<PokemonListItemEntity>>
     suspend fun savePokemonListItems(pokemonListItems: List<PokemonListItem>)
 }
 
 interface PokemonDetailDatabase {
-    fun pokemonDetail(id: Int): Flow<PokemonDetailEntity>
+    suspend fun isSaved(id: Int): Boolean
+    fun pokemonDetail(id: Int): Flow<List<PokemonDetailEntity>>
     suspend fun savePokemonDetail(pokemonDetail: PokemonDetailView)
 }
 
@@ -23,7 +24,11 @@ internal class RoomDatabase(
     private val cacheDatabase: CacheDatabase
 ) : PokemonListItemDatabase, PokemonDetailDatabase {
 
-    override fun pokemonListItems(): Flow<List<PokemonListItemEntity>> =
+    override suspend fun isSaved(id: Int): Boolean {
+        return cacheDatabase.pokemonDetailDao().isSaved(id)
+    }
+
+    override suspend fun pokemonListItems() =
         cacheDatabase.pokemonListItemDao().allPokemonListItem()
 
     override suspend fun savePokemonListItems(pokemonListItems: List<PokemonListItem>) {
@@ -35,8 +40,7 @@ internal class RoomDatabase(
         }
     }
 
-    override fun pokemonDetail(id: Int): Flow<PokemonDetailEntity> =
-        cacheDatabase.pokemonDetailDao().pokemonDetail(id)
+    override fun pokemonDetail(id: Int) = cacheDatabase.pokemonDetailDao().pokemonDetail(id)
 
     override suspend fun savePokemonDetail(pokemonDetail: PokemonDetailView) {
         cacheDatabase.withTransaction {

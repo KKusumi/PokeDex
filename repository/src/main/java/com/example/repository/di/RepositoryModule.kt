@@ -15,7 +15,8 @@ val repositoryModule = module {
     }
     factory {
         PokemonDetailRepositoryImpl(
-            get()
+            pokeApiClient = get(),
+            pokemonDetailDatabase = get()
         ) as PokemonDetailRepository
     }
 }

@@ -40,7 +40,6 @@ class HomeViewModel(
                     .toLoadingState()
                     .asLiveData(context = viewModelScope.coroutineContext)
             )
-
             when (val result = getPokemonListUseCase.refresh()) {
                 is Ok -> {
                     // NOP

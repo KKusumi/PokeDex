@@ -4,16 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.Relation
 
 interface PokemonDetailEntity {
     val id: Int
     val name: String
-    val type1: TypeXEntity
-    val type2: TypeXEntity?
-    val ability1: AbilityXEntity
-    val ability2: AbilityXEntity?
-    val hiddenAbility: AbilityXEntity?
+    val type1: String
+    val type2: String?
+    val ability1: String
+    val ability2: String?
+    val hiddenAbility: String?
     val height: Int
     val weight: Int
     val hp: Int
@@ -30,15 +29,15 @@ internal data class PokemonDetailEntityImpl(
     override val id: Int,
     override val name: String,
     @ColumnInfo(name = "type_1")
-    @Embedded override val type1: TypeXEntityImpl,
+    override val type1: String,
     @ColumnInfo(name = "type_2")
-    @Embedded override val type2: TypeXEntityImpl?,
+    override val type2: String?,
     @ColumnInfo(name = "ability_1")
-    @Embedded override val ability1: AbilityXEntityImpl,
+    override val ability1: String,
     @ColumnInfo(name = "ability_2")
-    @Embedded override val ability2: AbilityXEntityImpl?,
+    override val ability2: String?,
     @ColumnInfo(name = "hidden_ability")
-    @Embedded override val hiddenAbility: AbilityXEntity?,
+    override val hiddenAbility: String?,
     override val height: Int,
     override val weight: Int,
     override val hp: Int,
@@ -49,4 +48,4 @@ internal data class PokemonDetailEntityImpl(
     @ColumnInfo(name = "special_defense")
     override val specialDefense: Int,
     override val speed: Int
-): PokemonDetailEntity
+) : PokemonDetailEntity

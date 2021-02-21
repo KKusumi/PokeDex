@@ -11,7 +11,7 @@ interface GetPokemonListUseCase {
     suspend fun refresh(): Result<Unit, PokeDexException>
 }
 
-class GetPokemonListUseCaseImpl(
+internal class GetPokemonListUseCaseImpl(
     private val pokemonListRepository: PokemonListRepository
 ) : GetPokemonListUseCase {
 

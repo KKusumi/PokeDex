@@ -4,51 +4,72 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
 import com.example.pokedex.common.delegate.ErrorViewModelDelegate
+import com.example.pokedex.common.ext.combine
+import com.example.pokedex.common.ext.toLoadingState
 import com.example.pokedex.domain.GetPokemonDetailUseCase
-import com.example.pokedex.model.model.UiState
+import com.example.pokedex.model.model.LoadState
+import com.example.pokedex.model.model.PokeDexException
 import com.example.pokedex.model.view.PokemonDetailView
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
 
 class PokemonDetailViewModel(
+    private val id: Int,
     private val getPokemonDetailUseCase: GetPokemonDetailUseCase,
     private val errorViewModelDelegate: ErrorViewModelDelegate
 ) : ViewModel(), LifecycleObserver,
     ErrorViewModelDelegate by errorViewModelDelegate {
 
-    companion object {
-        private const val DEFAULT_ID = -1
-    }
-
-    // State
-    private val _pokemonDetailView: MutableLiveData<PokemonDetailView> = MutableLiveData()
-    val pokemonDetailView: LiveData<PokemonDetailView>
-        get() = _pokemonDetailView
-
-    private var _id: Int = DEFAULT_ID
-
-    fun retry() {
-        if (_id != DEFAULT_ID) {
-            fetchData(_id)
+    data class UiModel(
+        val isLoading: Boolean,
+        var error: PokeDexException?,
+        val pokemonDetailView: PokemonDetailView
+    ) {
+        companion object {
+            val EMPTY = UiModel(false, null, PokemonDetailView.Empty)
         }
     }
 
-    fun fetchData(id: Int) {
-        viewModelScope.launch {
-            _id = id
-            uiState.postValue(UiState.Loading)
-            when (val result = getPokemonDetailUseCase.execute(id)) {
-                is Ok -> {
-                    uiState.postValue(UiState.Loaded)
-                    _pokemonDetailView.postValue(result.value)
-                }
-                is Err -> {
-                    handleError(result.error)
-                }
+    private val pokemonDetailViewLoadState: LiveData<LoadState<PokemonDetailView>> = liveData {
+        if (getPokemonDetailUseCase.isSaved(id)) {
+            emitSource(
+                getPokemonDetailUseCase.queryData(id)
+                    .toLoadingState()
+                    .asLiveData(Dispatchers.IO)
+            )
+        }
+        when (val result = getPokemonDetailUseCase.fetchData(id)) {
+            is Ok -> {
+                emitSource(
+                    MutableLiveData(LoadState.Loaded(result.value))
+                )
+            }
+            is Err -> {
+                // Handle Error
             }
         }
+    }
+
+    val uiModel: MutableLiveData<UiModel> = combine(
+        initialValue = UiModel.EMPTY,
+        liveData1 = pokemonDetailViewLoadState
+    ) { current, loadState ->
+        val pokemonDetailView = when (loadState) {
+            is LoadState.Loaded -> {
+                loadState.value
+            }
+            else -> {
+                current.pokemonDetailView
+            }
+        }
+        UiModel(
+            isLoading = loadState.isLoading,
+            error = loadState.getErrorIfExists(),
+            pokemonDetailView = pokemonDetailView
+        )
     }
 }

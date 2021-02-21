@@ -13,8 +13,8 @@ internal abstract class PokemonListItemDao {
     abstract fun allPokemonListItem(): Flow<List<PokemonListItemEntityImpl>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(pokemonListItem: List<PokemonListItemEntityImpl>)
+    abstract suspend fun insert(pokemonListItem: List<PokemonListItemEntityImpl>)
 
     @Query("DELETE FROM pokemon_list_item")
-    abstract fun deleteAll()
+    abstract suspend fun deleteAll()
 }
