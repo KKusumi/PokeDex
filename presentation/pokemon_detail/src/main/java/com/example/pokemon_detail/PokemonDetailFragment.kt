@@ -69,6 +69,7 @@ class PokemonDetailFragment : Fragment(R.layout.fragment_pokemon_detail) {
             this.uiModel.observe(viewLifecycleOwner) { uiModel ->
                 binding.progressBar.isShow = uiModel.isLoading
                 binding.pokemonDetailView = uiModel.pokemonDetailView
+                activity?.changeStatusBarColor(uiModel.pokemonDetailView.primaryColorCode)
                 controller.setData(uiModel.pokemonDetailView)
                 uiModel.error?.let {
                     // エラー時処理
