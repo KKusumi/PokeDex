@@ -29,16 +29,7 @@ data class PokemonListView(
         val number
             get() = generatePokemonNumber(url)
 
-        val imageUrl
-            get() = generateImageUrl(number.toString())
-
         val thumbnailImageUrl get() = generateThumbnailImageUrl(number.toString())
-
-        fun getCamelCaseName(): String = if (name.isEmpty()) {
-            ""
-        } else {
-            name[0].toUpperCase() + name.substring(1)
-        }
 
         // PokemonListResponse.Pokemon.urlから図鑑ナンバーを生成する。
         private fun generatePokemonNumber(url: String) =
@@ -46,14 +37,6 @@ data class PokemonListView(
 
         private fun generateThumbnailImageUrl(number: String) =
             "https://github.com/fanzeyi/pokemon.json/blob/master/thumbnails/${
-                number.padStart(
-                    3,
-                    '0'
-                )
-            }.png?raw=true"
-
-        private fun generateImageUrl(number: String) =
-            "https://github.com/fanzeyi/pokemon.json/blob/master/images/${
                 number.padStart(
                     3,
                     '0'

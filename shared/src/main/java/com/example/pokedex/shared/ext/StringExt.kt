@@ -1,7 +1,7 @@
 package com.example.pokedex.shared.ext
 
-fun String?.convertToCamelCase() = if (this?.isEmpty() == true) {
-    ""
+fun String?.toCamelCase(): String = if (this?.isNotEmpty() == true) {
+    this.first().toUpperCase() + this.substring(1)
 } else {
-    this?.first()?.plus(this.substring(1))
+    ""
 }

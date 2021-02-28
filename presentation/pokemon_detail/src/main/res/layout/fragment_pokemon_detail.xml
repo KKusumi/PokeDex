@@ -49,7 +49,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:type_half_circle="@{StringExtKt.convertToCamelCase(pokemonDetailView.type1)}" />
+                app:type_half_circle="@{pokemonDetailView.type1}" />
 
             <ImageView
                 android:id="@+id/image"
@@ -86,7 +86,7 @@
                 android:layout_marginStart="@dimen/space_x2"
                 android:layout_marginTop="@dimen/space_x1"
                 android:lineHeight="22sp"
-                android:text="@{StringExtKt.convertToCamelCase(pokemonDetailView.name)}"
+                android:text="@{StringExtKt.toCamelCase(pokemonDetailView.name)}"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
