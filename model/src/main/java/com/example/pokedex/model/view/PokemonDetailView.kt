@@ -53,13 +53,13 @@ data class PokemonDetailView(
                     ?.let { TypeX.transform(it).name },
                 ability1 = AbilityX.transform(pokemonDetailResponse.abilities[0].ability).name,
                 ability2 = pokemonDetailResponse.abilities
+                    .filter { !it.is_hidden }
                     .elementAtOrNull(1)
                     ?.ability
                     ?.let { AbilityX.transform(it).name },
                 hiddenAbility = pokemonDetailResponse.abilities
-                    .elementAtOrNull(2)
-                    ?.ability
-                    ?.let { AbilityX.transform(it).name },
+                    .find { it.is_hidden }
+                    ?.let { AbilityX.transform(it.ability).name },
                 height = pokemonDetailResponse.height,
                 weight = pokemonDetailResponse.weight,
                 hp = pokemonDetailResponse.stats.find { it.stat.name == "hp" }?.base_stat ?: 0,
